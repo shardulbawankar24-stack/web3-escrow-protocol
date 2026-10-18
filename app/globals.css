@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0f1115;
+  --foreground: #edf2ef;
+  --surface-container-low: #171b1f;
+  --surface-container-lowest: #0a0c0f;
+  --surface-container: #1d2327;
+  --surface-container-high: #283035;
+  --surface-container-highest: #343e43;
+  --surface-variant: #343e43;
+  --muted: #b8c6bf;
+  --outline-variant: #46534d;
+  --outline: #8b9891;
+  --primary: #66e0a3;
+  --primary-container: #3bbf8a;
+  --secondary: #f2c46d;
+  --on-primary: #061c14;
+  --on-surface-variant: #b8c6bf;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  font-family: var(--font-inter), sans-serif;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(102, 224, 163, 0.1), transparent 28%),
+    radial-gradient(circle at 78% 4%, rgba(242, 196, 109, 0.12), transparent 24%),
+    var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-headline {
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+.glass-panel {
+  background-color: rgb(34 42 61 / 60%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgb(62 74 63 / 15%);
+  border-radius: 24px;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #66e0a3, #f2c46d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #66e0a3 0%, #f2c46d 100%);
+}
+
+.neon-shadow {
+  box-shadow: 0 0 20px rgb(102 224 163 / 34%);
+}
+
+.ambient-shadow {
+  box-shadow: 0 32px 64px -20px rgb(6 14 32 / 50%);
+}
+
+.ghost-border {
+  border: 1px solid rgb(62 74 63 / 15%);
+}
+
+.wallet-adapter-button-trigger {
+  background: linear-gradient(to right, #66e0a3, #f2c46d);
+  color: #061c14;
+  border-radius: 9999px;
+  border: 0;
+  height: 42px;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  box-shadow: 0 0 18px rgb(102 224 163 / 32%);
+}
+
+.wallet-adapter-button-trigger:hover {
+  filter: brightness(1.06);
+}
+
+.wallet-adapter-modal-wrapper {
+  border: 1px solid rgb(62 74 63 / 20%);
+  background: #171b1f;
+}

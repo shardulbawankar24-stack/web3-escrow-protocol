@@ -1,0 +1,72 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Vault {
+  id                     String   @id @default(cuid())
+  vaultId                String   @unique
+  name                   String
+  type                   String
+  status                 String   // active, claimed, closed
+  strategyLabel          String
+  lockEndsAt             DateTime
+  principalUsdc          Float
+  ownerWallet            String
+  accumulatedRewardsUsdc Float    @default(0)
+  rewardPoolUsdc         Float    @default(0)
+  projectedApy           Float    @default(0)
+  useAaveYield           Boolean  @default(false)
+  aaveLockDays           Int?
+  aaveStatus             String?
+  targetUsdc             Float?
+  whitelistCount         Int?
+  releaseAmountUsdc      Float?
+  cadence                String?
+  beneficiaries          String?  // JSON string or comma separated
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+}
+
+model RewardHistory {
+  id        String   @id @default(cuid())
+  month     String   @unique
+  value     Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TransactionLog {
+  id            String   @id
+  vaultId       String
+  kind          String
+  status        String
+  cluster       String
+  signature     String?
+  explorerUrl   String?
+  amountUsdc    Float
+  netAmountUsdc Float
+  penaltyUsdc   Float    @default(0)
+  fromWallet    String?
+  toWallet      String?
+  memo          String
+  createdAt     DateTime @default(now())
+}
+
+model UserProfile {
+  id               String   @id @default(cuid())
+  walletAddress    String   @unique
+  displayName      String
+  email            String?
+  organizationName String?
+  purpose          String
+  purposeDetails   String?
+  signedMessage    String
+  signature        String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}

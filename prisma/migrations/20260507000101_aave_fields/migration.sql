@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "Vault" ADD COLUMN "useAaveYield" BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE "Vault" ADD COLUMN "aaveLockDays" INTEGER;
+ALTER TABLE "Vault" ADD COLUMN "aaveStatus" TEXT;
